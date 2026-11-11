@@ -1,0 +1,23 @@
+{% extends 'mibiblioteca/base.html' %}
+{% block titulo %}Lista de Libros{% endblock %}
+{% block contenido %}
+    <ul>
+        {% for libro in libros %}
+            <li>
+                <b><a href="{% url 'detalle_libro' pk=libro.pk %}">{{libro.titulo}}</a></b>
+                <ul>
+                    <li>Autor: <i>{{libro.autor}}</i></li>
+                    <li>Género: <i>{{libro.genero}}</i></li>
+                    {% if libro.disponible %}
+                        <li><i>Disponible</i></li>
+                    {% else %}
+                        <li><i>No disponible</i></li>
+                    {% endif %}
+                </ul>
+                <br>
+            </li>
+        {% empty %}
+            <li>No hay libros registrados</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

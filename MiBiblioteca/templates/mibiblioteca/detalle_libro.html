@@ -1,0 +1,13 @@
+{% extends 'mibiblioteca/base.html' %}
+{% block titulo %}{{libro.titulo}}{% endblock %}
+{% block contenido %}
+    <p><b>Autor:</b> {{libro.autor}}</p>
+    <p><b>Género:</b> {{libro.genero}}</p>
+    <p><b>Año de publicación:</b> {{libro.anio_publicacion}}</p>
+    {% if libro.disponible %}
+        <p><b>Disponibilidad:</b> Disponible</p>
+    {% else %}
+        <p><b>Disponibilidad:</b> No disponible</p>
+    {% endif %}
+    <h3><a href="{% url 'lista_libros' %}">Volver a lista de libros</a></h3>
+{% endblock %}
